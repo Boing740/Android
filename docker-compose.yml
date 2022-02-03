@@ -1,12 +1,25 @@
 version: "3"
 
 services:
-  android:
+  androidS8:
     image: budtmo/docker-android-x86-8.1
-    container_name: android-container
+    container_name: android-container-s8
     privileged: true
     environment:
-      - DEVICE=Samsung Galaxy S6
+      - DEVICE=Samsung Galaxy S8
+    ports:
+      - "5556:5555"
+      - "5557:5554"
+      - "6081:6080"
+    networks:
+      mynet:
+        ipv4_address: 172.16.238.12
+  androidS10:
+    image: budtmo/docker-android-x86-8.1
+    container_name: android-container-s10
+    privileged: true
+    environment:
+      - DEVICE=Samsung Galaxy S10
     ports:
       - "5555:5555"
       - "5554:5554"
@@ -16,10 +29,13 @@ services:
         ipv4_address: 172.16.238.11
   kali:
     image: kali-linux-metasploit
+    container_name: kali
     build:
       context: .
       dockerfile: Dockerfile-kali
     stdin_open: true
+    volumes:
+      - ~/Desktop/NSproject/app:/app
     networks:
       mynet:
         ipv4_address: 172.16.238.10
@@ -28,5 +44,3 @@ networks:
     ipam:
       config:
         - subnet: 172.16.238.0/24
-
-
