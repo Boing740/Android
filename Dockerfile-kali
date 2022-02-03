@@ -1,4 +1,13 @@
 FROM kalilinux/kali-rolling
 
-RUN apt update && apt -y install metasploit-framework
-RUN apt update && apt -y install apache2
+RUN apt -y update
+RUN apt -y install metasploit-framework
+RUN apt -y install zipalign
+RUN apt -y install net-tools
+RUN apt -y install apache2
+RUN apt -y install default-jre
+RUN apt-get -y install openjdk-11-jdk-headless
+RUN wget https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.6.0.jar
+RUN mv apktool_2.6.0.jar /usr/local/bin/apktool.jar
+COPY ./app /app
+COPY ./tool /usr/local/bin
