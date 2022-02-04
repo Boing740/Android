@@ -6,7 +6,11 @@ This project aims to simulate an attack scenario against Android devices. Using 
 
 1. Docker and docker-compose are installed in your system. Check installation here: https://www.docker.com/
 2. This project use a docker image for android device. Check the documentation here: https://github.com/budtmo/docker-android
-
+3. Before you start check if your machine support virtualization:
+ ```bash
+sudo apt install cpu-checker
+kvm-ok
+```
 ## Quick start
 
 1. Download Dockerfile and docker-compose.yml from this repository
